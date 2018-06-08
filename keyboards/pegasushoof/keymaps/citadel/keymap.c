@@ -66,7 +66,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_LSFT,KC_NUBS,KC_Z,   KC_X,   KC_C,   KC_V,   KC_B,   KC_N,   KC_M,   KC_COMM,KC_DOT, KC_SLSH,        KC_RSFT,          KC_UP,           \
   KC_LCTL,KC_LGUI,KC_LALT,                        KC_SPC,                         KC_RALT,KC_LALT,MO(FUN),KC_RCTL,  KC_LEFT,KC_DOWN,KC_RGHT),
 
-    /* Layer 1: function layer
+/* Layer 1: function layer
  * .----.   .-------------------. .-------------------. .-------------------. .--------------.
  * |Ctl+|   |My  |WWW:|Calc|Medi| |Mus:|Mus:|Mus:|Mus:| |Vol:|Vol:|Vol:|See:| |    |    |Paus|
  * |A+De|   |Comp|Home|    |Play| |Prev|Next|Paus|Stop| |Mute|Down|Up  |[3] | |    |    |Brea|
@@ -122,7 +122,7 @@ void led_set_user(uint8_t usb_led) {
 
   if (usb_led & (1 << USB_LED_SCROLL_LOCK)) {
     ph_sclk_led_on();
-    } else {
+  } else {
     ph_sclk_led_off();
   }
 }
