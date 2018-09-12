@@ -17,9 +17,10 @@
 #include "pegasushoof.h"
 
 /* Allow shortcuts for combos like RALT(KC_RBRC) that don't take up more than 7 characters: */
-#define G(kc) RALT(KC_##kc)
-#define A(kc) LALT(KC_##kc)
 #define C(kc) LCTL(KC_##kc)
+#define G(kc) LGUI(KC_##kc)
+#define A(kc) LALT(KC_##kc)
+#define R(kc) RALT(KC_##kc)
 #undef S /* Original shortcut (quantum_keycodes.h) takes full-sized keycodes: too long! */
 #define S(kc) LSFT(KC_##kc)
 #define CTALDEL LCTL(LALT(KC_DEL))
@@ -37,8 +38,8 @@ enum tap_dance {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Layer 0: default layer (ISO-DE)
  * .----.   .-------------------. .-------------------. .-------------------. .--------------.
- * |Esc |   |F1  |F2  |F3  |F4  | |F5  |F6  |F7  |F8  | |F9  |F10 |F11 |F12 | |PrSc|Alt+|2Tp:|
- * |    |   |    |    |    |    | |    |    |    |    | |    |    |    |    | |SyRq|Tap |A+F4|
+ * |Esc |   |F1  |F2  |F3  |F4  | |F5  |F6  |F7  |F8  | |F9  |F10 |F11 |F12 | |PrSc|Ctrl|2Tp:|
+ * |    |   |    |    |    |    | |    |    |    |    | |    |    |    |    | |SyRq|+F12|A+F4|
  * '----'   '-------------------' '-------------------' '-------------------' '--------------'
  * .------------------------------------------------------------------------. .--------------.
  * |°   |!   |"   |§   |$   |%   |&   |/   |(   |)   |=   |?   |`   |Backspa| |Ins |Home|PgUp|
@@ -53,13 +54,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |Shift|>   |Y   |X   |C   |V   |B   |N   |M   |;   |:   |_   |Shift      |      |Up  |
  * |     |<  ¦|    |    |    |    |    |    |   µ|,   |.   |-   |           |      |    |
  * |------------------------------------------------------------------------| .--------------.
- * |Ctrl |Super|Alt  |                              |AltGr|Alt  |Fn:  |Ctrl | |Left|Down|Righ|
+ * |Ctrl |LGUI |Alt  |                              |AltGr|Alt  |Fn:  |Ctrl | |Left|Down|Righ|
  * |     |     |     |                              |     |     |Lay 2|     | |    |    |    |
  * '------------------------------------------------------------------------' '--------------'
  *                                                                                                  NUHS = true position of KC_NUHS
  */
 [DEF] = KEYMAP( \
-  KC_ESC,         KC_F1,  KC_F2,  KC_F3,  KC_F4,  KC_F5,  KC_F6,  KC_F7,  KC_F8,  KC_F9,  KC_F10, KC_F11, KC_F12,   KC_PSCR,A(TAB) ,TD(AF4), \
+  KC_ESC,         KC_F1,  KC_F2,  KC_F3,  KC_F4,  KC_F5,  KC_F6,  KC_F7,  KC_F8,  KC_F9,  KC_F10, KC_F11, KC_F12,   KC_PSCR,C(F12), TD(AF4), \
   KC_GRV, KC_1,   KC_2,   KC_3,   KC_4,   KC_5,   KC_6,   KC_7,   KC_8,   KC_9,   KC_0,   KC_MINS,KC_EQL, KC_BSPC,  KC_INS, KC_HOME,KC_PGUP, \
   KC_TAB, KC_Q,   KC_W,   KC_E,   KC_R,   KC_T,   KC_Y,   KC_U,   KC_I,   KC_O,   KC_P,   KC_LBRC,KC_RBRC,KC_NUHS,  KC_DEL, KC_END, KC_PGDN, \
   MO(FUN),KC_A,   KC_S,   KC_D,   KC_F,   KC_G,   KC_H,   KC_J,   KC_K,   KC_L,   KC_SCLN,KC_QUOT,/*NUHS*/KC_ENT,                            \
@@ -84,17 +85,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |     |    |    |    |    |    |    |    |µ   |    |    |    |           |      |Mou:|
  * |     |    |    |    |    |    |    |    |    |    |    |    |           |      |Up  |
  * |------------------------------------------------------------------------| .--------------.
- * |Mous:|Mous:|     |                              |     |Super|App  |     | |Mou:|Mou:|Mou:|
+ * |Mous:|Mous:|     |                              |     |RGUI |App  |     | |Mou:|Mou:|Mou:|
  * |Bttn2|Bttn1|     |                              |     |     |     |     | |Left|Down|Righ|
  * '------------------------------------------------------------------------' '--------------'
  *
  */
 [FUN] = KEYMAP( \
   CTALDEL,        KC_MYCM,KC_WHOM,KC_CALC,KC_MSEL,KC_MPRV,KC_MNXT,KC_MPLY,KC_MSTP,KC_MUTE,KC_VOLD,KC_VOLU,MO(RES),  _______,KC_SLCK,KC_PAUS, \
-  _______,_______,_______,_______,_______,_______,_______,G(7),   G(8),   G(9),   G(0),   G(MINS),_______,_______,  _______,_______,KC_WH_U, \
-  _______,_______,_______,_______,_______,_______,_______,_______,_______,_______,_______,_______,G(RBRC),_______,  _______,_______,KC_WH_D, \
+  _______,_______,_______,_______,_______,_______,_______,R(7),   R(8),   R(9),   R(0),   R(MINS),_______,_______,  _______,_______,KC_WH_U, \
+  _______,_______,_______,_______,_______,_______,_______,_______,_______,_______,_______,_______,R(RBRC),_______,  _______,_______,KC_WH_D, \
   KC_CAPS,KC_ACL2,KC_ACL0,_______,_______,_______,_______,_______,_______,_______,_______,_______,/*NUHS*/_______,                           \
-  _______,_______,_______,_______,_______,_______,_______,_______,G(M),   _______,_______,_______,        _______,          KC_MS_U,         \
+  _______,_______,_______,_______,_______,_______,_______,_______,R(M),   _______,_______,_______,        _______,          KC_MS_U,         \
   KC_BTN2,KC_BTN1,_______,                        _______,                        _______,KC_RGUI,KC_APP ,_______,   KC_MS_L,KC_MS_D,KC_MS_R),
 
 
