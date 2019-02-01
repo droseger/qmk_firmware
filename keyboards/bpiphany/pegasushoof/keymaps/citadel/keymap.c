@@ -28,7 +28,10 @@
 #define R(kc) RALT(KC_##kc)
 #define G(kc) LGUI(KC_##kc)
 #define CTALDEL LCTL(LALT(KC_DEL))
+/* Facilitate key-combos involving keys customized in the default layer (e.g. LGUI+PAUS): */
+#define LEFTCTL LM(VAN, MOD_LCTL)
 #define LEFTALT LM(VAN, MOD_LALT)
+#define LEFTGUI LM(VAN, MOD_LGUI)
 
 enum layers {
   DEF,
@@ -71,7 +74,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB, KC_Q,   KC_W,   KC_E,   KC_R,   KC_T,   KC_Y,   KC_U,   KC_I,   KC_O,   KC_P,   KC_LBRC,KC_RBRC,KC_NUHS,  KC_DEL, KC_END, KC_PGDN, \
   MO(FUN),KC_A,   KC_S,   KC_D,   KC_F,   KC_G,   KC_H,   KC_J,   KC_K,   KC_L,   KC_SCLN,KC_QUOT,/*NUHS*/KC_ENT,                            \
   KC_LSFT,KC_NUBS,KC_Z,   KC_X,   KC_C,   KC_V,   KC_B,   KC_N,   KC_M,   KC_COMM,KC_DOT, KC_SLSH,        KC_RSFT,          KC_UP,           \
-  KC_LCTL,KC_LGUI,KC_LALT,                        KC_SPC,                         KC_RALT,KC_RGUI,MO(FUN),KC_RCTL,  KC_LEFT,KC_DOWN,KC_RGHT),
+  LEFTCTL,LEFTGUI,LEFTALT,                        KC_SPC,                         KC_RALT,KC_RGUI,MO(FUN),KC_RCTL,  KC_LEFT,KC_DOWN,KC_RGHT),
 
 /* Layer 1: function layer
  * .----.   .-------------------. .-------------------. .-------------------. .--------------.
@@ -101,18 +104,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______,_______,_______,_______,_______,_______,_______,R(7),   R(8),   R(9),   R(0),   R(MINS),_______,_______,  _______,_______,KC_WH_U, \
   _______,_______,_______,_______,_______,_______,_______,_______,_______,_______,_______,_______,R(RBRC),_______,  _______,_______,KC_WH_D, \
   KC_CAPS,KC_ACL2,KC_ACL0,_______,_______,_______,_______,_______,_______,_______,_______,_______,/*NUHS*/_______,                           \
-  _______,_______,_______,_______,_______,_______,_______,_______,R(M),   _______,_______,_______,        _______,           KC_MS_U,        \
-  KC_BTN2,KC_BTN1,_______,                        _______,                        _______,LEFTALT,KC_APP ,_______,   KC_MS_L,KC_MS_D,KC_MS_R),
+  _______,_______,_______,_______,_______,_______,_______,_______,R(M),   _______,_______,_______,        _______,          KC_MS_U,         \
+  KC_BTN2,KC_BTN1,_______,                        _______,                        _______,LEFTALT,KC_APP ,_______,  KC_MS_L,KC_MS_D,KC_MS_R),
 
 
 /* Layer 3: vanilla layer (resets every customized key to its ISO default) */
 [VAN] = LAYOUT( \
-  KC_ESC,         KC_F1,  KC_F2,  KC_F3,  KC_F4,  KC_F5,  KC_F6,  KC_F7,  KC_F8,  KC_F9,  KC_F10, KC_F11, KC_F12,   _______,_______,_______, \
+  KC_ESC,         KC_F1,  KC_F2,  KC_F3,  KC_F4,  KC_F5,  KC_F6,  KC_F7,  KC_F8,  KC_F9,  KC_F10, KC_F11, KC_F12,   _______,KC_SLCK,KC_PAUS, \
   _______,_______,_______,_______,_______,_______,_______,KC_7,   KC_8,   KC_9,   KC_0,   KC_MINS,_______,_______,  _______,_______,KC_PGUP, \
   _______,_______,_______,_______,_______,_______,_______,_______,_______,_______,_______,_______,KC_RBRC,_______,  _______,_______,KC_PGDN, \
   KC_CAPS,KC_A,   KC_S,   _______,_______,_______,_______,_______,_______,_______,_______,_______,/*NUHS*/_______,                           \
-  _______,_______,_______,_______,_______,_______,_______,_______,KC_M,   _______,_______,_______,        _______,           KC_UP,          \
-  KC_LCTL,KC_LGUI,_______,                        _______,                        _______,KC_RGUI,KC_APP ,_______,   KC_LEFT,KC_DOWN,KC_RGHT),
+  _______,_______,_______,_______,_______,_______,_______,_______,KC_M,   _______,_______,_______,        _______,          KC_UP,           \
+  KC_LCTL,KC_LGUI,KC_LALT,                        _______,                        _______,KC_RGUI,KC_APP ,_______,  KC_LEFT,KC_DOWN,KC_RGHT),
 
 
 /* Layer 4: reset layer (prevents accidental resets) */
