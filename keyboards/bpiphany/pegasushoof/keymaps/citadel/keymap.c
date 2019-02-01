@@ -58,7 +58,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |Shift|>   |Y   |X   |C   |V   |B   |N   |M   |;   |:   |_   |Shift      |      |Up  |
  * |     |<  ¦|    |    |    |    |    |    |   µ|,   |.   |-   |           |      |    |
  * |------------------------------------------------------------------------| .--------------.
- * |Ctrl |Super|Alt  |                              |AltGr|Alt  |Fn:  |Ctrl | |Left|Down|Righ|
+ * |Ctrl |GUI  |Alt  |                              |AltGr|Alt  |Fn:  |Ctrl | |Left|Down|Righ|
  * |     |     |     |                              |     |     |Lay 2|     | |    |    |    |
  * '------------------------------------------------------------------------' '--------------'
  *                                                                                                  NUHS = true position of KC_NUHS
@@ -89,7 +89,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |     |    |    |    |    |    |    |    |µ   |    |    |    |           |      |Mou:|
  * |     |    |    |    |    |    |    |    |    |    |    |    |           |      |Up  |
  * |------------------------------------------------------------------------| .--------------.
- * |Mous:|Mous:|     |                              |     |Super|App  |     | |Mou:|Mou:|Mou:|
+ * |Mous:|Mous:|     |                              |     |GUI  |App  |     | |Mou:|Mou:|Mou:|
  * |Bttn2|Bttn1|     |                              |     |     |     |     | |Left|Down|Righ|
  * '------------------------------------------------------------------------' '--------------'
  *
