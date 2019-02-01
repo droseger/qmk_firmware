@@ -67,8 +67,8 @@ as `RESET` key [3].
 1) Prerequisite: install the necessary [build tools](https://docs.qmk.fm/#/getting_started_build_tools)
 such as [dfu-programmer](https://github.com/dfu-programmer/dfu-programmer).
    - You might need to [add udev rules](https://docs.qmk.fm/#/faq_build?id=can39t-program-on-linux) under Linux.
-2) To test if the keymap compiles, simply run `make pegasushoof:citadel`
-3) Enter the `qmk_firmware` root directory and run `make pegasushoof:citadel:dfu`
+2) To test if the keymap compiles, simply run `make bpiphany/pegasushoof:citadel`
+3) Enter the `qmk_firmware` root directory and run `make bpiphany/pegasushoof:citadel:dfu`
 4) Reset controller to _Boot mode_ by pressing the `RESET` key or by using a magnet.
 
 ## [3] How to access Boot mode after install
